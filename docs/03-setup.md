@@ -97,6 +97,27 @@ python src/chat.py -q "How much vacation do engineers get?"
 python src/chat.py  # interactive mode
 ```
 
+### Run the Jupyter notebook (interactive learning)
+
+```bash
+source venv/bin/activate
+jupyter notebook          # then open notebooks/rag_walkthrough.ipynb
+```
+
+The notebook walks through all 6 steps with runnable cells and a playground
+section.
+
+### Demo retrieval without an API key
+
+Want to see retrieval working *before* you set up an API key?
+
+```bash
+python tests/demo_retrieval.py
+```
+
+This uses a lightweight TF-IDF text-similarity method as a stand-in for real
+embeddings, so you can understand how retrieval works from day one.
+
 ## Vector Database Choice
 
 We use **ChromaDB** — it's free, open-source, and the standard choice for
@@ -118,6 +139,12 @@ rag-learning/
 │   ├── 02-how-rag-works.md
 │   ├── 03-setup.md
 │   └── 04-glossary.md
+├── notebooks/                     # Interactive Jupyter walkthrough
+│   └── rag_walkthrough.ipynb
+├── scripts/
+│   └── build_notebook.py          # Regenerates the notebook from source
+├── tests/
+│   └── demo_retrieval.py          # Run retrieval demo WITHOUT an API key
 ├── data/                          # TechNova training documents (the knowledge base)
 │   ├── 01_company_overview.md
 │   ├── 02_engineering_teams.md

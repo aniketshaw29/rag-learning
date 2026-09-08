@@ -31,12 +31,17 @@ learn one concept at a time:
 
 | Step | Script | What you learn |
 |------|--------|----------------|
-| 1 | `01_load_documents.py` | Reading files into "documents" |
-| 2 | `02_chunk_documents.py` | Splitting text into searchable chunks |
-| 3 | `03_create_embeddings.py` | Turning text into vectors with Gemini |
-| 4 | `04_store_in_vectordb.py` | Storing vectors in ChromaDB |
-| 5 | `05_retrieve_context.py` | Finding relevant chunks (Retrieval) |
-| 6 | `06_generate_answer.py` | Gemini generating grounded answers |
+| 1 | `src/01_load_documents.py` | Reading files into "documents" |
+| 2 | `src/02_chunk_documents.py` | Splitting text into searchable chunks |
+| 3 | `src/03_create_embeddings.py` | Turning text into vectors with Gemini |
+| 4 | `src/04_store_in_vectordb.py` | Storing vectors in ChromaDB |
+| 5 | `src/05_retrieve_context.py` | Finding relevant chunks (Retrieval) |
+| 6 | `src/06_generate_answer.py` | Gemini generating grounded answers |
+
+There's also an **interactive Jupyter notebook** (`notebooks/rag_walkthrough.ipynb`)
+that walks through every step with runnable cells, and an **offline demo**
+(`tests/demo_retrieval.py`) that shows retrieval working **without an API key**
+using a lightweight TF-IDF stand-in for embeddings.
 
 ## Quick Start
 
@@ -48,7 +53,10 @@ pip install -r requirements.txt
 # 2. Add your Gemini key
 cp .env.example .env   # then edit .env with your key
 
-# 3. Run the full pipeline
+# 3. (Optional) See retrieval work without an API key
+python tests/demo_retrieval.py
+
+# 4. Run the full pipeline
 python src/full_rag_pipeline.py
 
 # Or run steps one at a time:
@@ -56,9 +64,13 @@ python src/01_load_documents.py
 python src/02_chunk_documents.py
 # ... on through 06
 
-# Or chat interactively
+# 5. Chat interactively
 python src/chat.py --ingest
 python src/chat.py -q "How much vacation do engineers get?"
+
+# 6. Or learn in the notebook
+python -m ipykernel install --user --name rag-learning  # once
+jupyter notebook                                         # open notebooks/
 ```
 
 ## Tech Stack
